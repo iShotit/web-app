@@ -12,14 +12,16 @@ import { endpoints, fetcher, mutator } from "@/axios";
 import { queryKeys } from "@/React-Query";
 import { useAuth } from "@/context/AuthContext";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function useGetUser(option?: { enabled: boolean }) {
-console.log(option, "option");
-//   const accessToken = getAuthToken();
-  const { data, isLoading, refetch, isRefetching, error, isError } = useQuery<IUser>({
-    queryKey: queryKeys.user.root,
-    queryFn: () => fetcher(endpoints.user.profile),
-    // enabled: option?.enabled || !!accessToken,
-  });
+  // console.log(option, "option");
+  //   const accessToken = getAuthToken();
+  const { data, isLoading, refetch, isRefetching, error, isError } =
+    useQuery<IUser>({
+      queryKey: queryKeys.user.root,
+      queryFn: () => fetcher(endpoints.user.profile),
+      // enabled: option?.enabled || !!accessToken,
+    });
 
   return useMemo(
     () => ({
@@ -34,31 +36,34 @@ console.log(option, "option");
   );
 }
 
-
 export function useUpdateProfile() {
-   const {loggedInUser}= useAuth()
-   console.log(loggedInUser, "looginuser")
-    const queryClient = useQueryClient();
-    const { mutateAsync, data, isPending, isError, error } = useMutation<
-       IUser,
-      any,
-      IUpdateUser
-    >({
-      mutationFn: (values: IUpdateUser) =>
-        mutator({ method: "PUT", data: values, url: endpoints.user.editProfile(loggedInUser?._id as string ) }),
-      onSuccess: () => {
-        queryClient.invalidateQueries({ queryKey: queryKeys.user.root });
-      },
-    });
-  
-    return useMemo(
-      () => ({
-        updateprofile: mutateAsync,
-        data,
-        isProfileUpdating: isPending,
-        error,
-        isError,
+  const { loggedInUser } = useAuth();
+  console.log(loggedInUser, "looginuser");
+  const queryClient = useQueryClient();
+  const { mutateAsync, data, isPending, isError, error } = useMutation<
+    IUser,
+    any,
+    IUpdateUser
+  >({
+    mutationFn: (values: IUpdateUser) =>
+      mutator({
+        method: "PUT",
+        data: values,
+        url: endpoints.user.editProfile(loggedInUser?._id as string),
       }),
-      [mutateAsync, data, isPending, error, isError]
-    );
-  }
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: queryKeys.user.root });
+    },
+  });
+
+  return useMemo(
+    () => ({
+      updateprofile: mutateAsync,
+      data,
+      isProfileUpdating: isPending,
+      error,
+      isError,
+    }),
+    [mutateAsync, data, isPending, error, isError]
+  );
+}

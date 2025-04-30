@@ -39,7 +39,7 @@ export default function FriendsList({ friends }: FriendsListProps) {
         <div className="flex items-center gap-3">
           <div className="relative h-12 w-12">
             <Image
-              src={imageUrl}
+              src={imageUrl || avatar}
               alt={profileData?.firstname || ""}
               fill
               className="rounded-full object-cover"

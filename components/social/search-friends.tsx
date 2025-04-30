@@ -53,7 +53,7 @@ export default function SearchPage() {
           <NoUsersFound searchQuery={searchQuery} />
         ) : (
           <div className="space-y-3">
-            {filteredUsers.map((user) => (
+            {filteredUsers?.map((user) => (
               <div
                 key={user.userId}
                 className="flex items-center justify-between p-4 bg-white rounded-xl 

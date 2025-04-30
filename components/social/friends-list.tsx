@@ -14,7 +14,7 @@ const FriendsList = () => {
     return "loading...";
   }
 
-  const searchResults: SearchResult[] = friendsList.map((request: any) => ({
+  const searchResults: SearchResult[] = friendsList?.map((request: any) => ({
     photo: "",
     status: "ACCEPTED",
     userId: request.userId,

@@ -18,7 +18,7 @@ export default function FriendRequests() {
   if (isFetchingFriendRequestList) {
     return "loading...";
   }
-  const searchResults: SearchResult[] = friendsRequestList.map(
+  const searchResults: SearchResult[] = friendsRequestList?.map(
     (request: any) => ({
       photo: "",
       status: request.status as "UNACCEPTED" | "PENDING" | "ACCEPTED",

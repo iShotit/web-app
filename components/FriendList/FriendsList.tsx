@@ -27,10 +27,10 @@ export default function FriendsList({ friends }: FriendsListProps) {
     router.push("auth/sign-in");
   };
 
-  const imageUrl =
-    profileData?.photo && profileData.photo !== "null"
-      ? profileData.photo
-      : avatar;
+  // const imageUrl =
+  //   profileData?.photo && profileData.photo !== "null"
+  //     ? profileData.photo
+  //     : avatar;
 
   return (
     <div className="w-full  max-w-xs bg-white rounded-lg   ">
@@ -39,7 +39,7 @@ export default function FriendsList({ friends }: FriendsListProps) {
         <div className="flex items-center gap-3">
           <div className="relative h-12 w-12">
             <Image
-              src={imageUrl || avatar}
+              src={profileData?.photo || avatar}
               alt={profileData?.firstname || ""}
               fill
               className="rounded-full object-cover"
@@ -61,11 +61,17 @@ export default function FriendsList({ friends }: FriendsListProps) {
       <div className="p-4 border border-gray-200">
         <h3 className="text-sm font-medium text-gray-500 mb-3">Your friends</h3>
         <div className="space-y-3">
-          {friends.map((friend) => (
+          {friends?.map((friend) => (
             <div key={friend.userId} className="flex items-center gap-3">
               <div className="relative h-10 w-10">
                 <Image
-                  src={friend.photo || avatar}
+                  // src={friend?.photo || avatar}
+                  src={
+                    friend?.photo?.startsWith("/") ||
+                    friend?.photo?.startsWith("http")
+                      ? friend.photo
+                      : avatar
+                  }
                   alt={friend.username}
                   fill
                   className="rounded-full object-cover"

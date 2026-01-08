@@ -1,39 +1,26 @@
 "use client";
 import { useGetSinglePost } from "@/app/api/posts";
+import CommentList from "@/components/comments/commentList";
 import PostCard from "@/components/PostCard/PostCard";
-import { Post } from "@/types/type";
-import {  ChevronsLeft } from "lucide-react";
-import React, { useEffect } from "react";
+import { ChevronsLeft } from "lucide-react";
 
 const SinglePost = ({ params }: { params: { postid: string } }) => {
-  const [post, setPost] = React.useState<Post>();
+  const { singlePost, isFetchingSinglePost, error } = useGetSinglePost(
+    params.postid
+  );
 
-  const { singlePost } =
-    useGetSinglePost();
-
-  useEffect(() => {
-    const getSinglePOst = async () => {
-      try {
-        const response = await singlePost({ postid: params.postid });
-        setPost(response.data);
-        console.log(response, "response liking post");
-      } catch (error) {
-        console.log(error, "error liking post");
-      }
-    };
-    getSinglePOst();
-  }, []);
-
-  console.log(params, "params");
   return (
     <div className="mx-4">
       <button
         className="flex items-center mt-4 ml-4"
         onClick={() => window.history.back()}
       >
-        <ChevronsLeft /> Back
+        <ChevronsLeft className="mr-1" /> Back
       </button>
-      {post && <PostCard post={post} />}
+      {isFetchingSinglePost && <p>Loading...</p>}
+      {error && <p>Error loading post.</p>}
+      {singlePost && <PostCard post={singlePost} />}
+      {singlePost && <CommentList postid={params.postid} />}
     </div>
   );
 };

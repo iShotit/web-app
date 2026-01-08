@@ -39,7 +39,7 @@ const navItems: NavItem[] = [
   {
     icon: <Search className="w-6 h-6" />,
     label: "Search",
-    href: "/search",
+    href: "/search-friends",
   },
   {
     icon: <Users className="w-6 h-6" />,

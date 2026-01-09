@@ -60,12 +60,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const hasVideo = mediaUrl && isVideo(mediaUrl);
   const thumbnailUrl = hasVideo ? getThumbnailUrl(mediaUrl) : mediaUrl;
 
-  const openGraph: Metadata["openGraph"] = {
+
+  const openGraph: any = {
     title: postText.slice(0, 60) || "Check out this shot!",
     description: description.slice(0, 160) || "Amazing content on iShot It!",
     siteName: "iShot It",
     locale: "en_US",
-    type: "website",
+    type: hasVideo ? "video.other" : "website",
   };
 
   if (thumbnailUrl) {
@@ -80,7 +81,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   if (hasVideo) {
-    openGraph.type = "video.other";
     openGraph.videos = [
       {
         url: mediaUrl,

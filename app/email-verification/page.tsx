@@ -2,11 +2,11 @@
 
 import { useSearchParams } from 'next/navigation';
 import { CheckCircle, XCircle, Loader2 } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback, Suspense } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { useVerifyEmail } from '../api/auth';
 
-export default function VerifyEmailPage() {
+function VerifyEmailContent() {
   const { toast } = useToast();
   const [data, setData] = useState<any>();
 
@@ -16,7 +16,7 @@ export default function VerifyEmailPage() {
   const { verifyEmail, isVerifying } = useVerifyEmail();
 
 
-  const handleVerifyEmail = async () => {
+  const handleVerifyEmail = useCallback(async () => {
     if (!token) {
       return;
     }
@@ -35,11 +35,11 @@ export default function VerifyEmailPage() {
         description: error.message || 'Something went wrong',
       });
     }
-  };
+  }, [token, verifyEmail, toast]);
 
   useEffect(() => {
     handleVerifyEmail();
-  }, []);
+  }, [handleVerifyEmail]);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
@@ -66,3 +66,21 @@ export default function VerifyEmailPage() {
     </div>
   );
 }
+
+export default function VerifyEmailPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center bg-gray-100">
+        <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+          <div className="flex flex-col items-center">
+            <Loader2 className="h-12 w-12 text-blue-500 animate-spin" />
+            <p className="mt-4 text-gray-600">Loading...</p>
+          </div>
+        </div>
+      </div>
+    }>
+      <VerifyEmailContent />
+    </Suspense>
+  );
+}
+

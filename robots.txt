@@ -1,4 +1,7 @@
 User-agent: *
-Disallow:
+Allow: /
+
+Disallow: /admin/
+Disallow: /account/settings/
 
 Sitemap: https://ishot-it.com/sitemap.xml

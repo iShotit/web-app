@@ -14,7 +14,7 @@
     </url>
 
     <url>
-        <loc>https://ishot-it.com/features</loc>
+        <loc>https://ishot-it.com/how-it-works</loc>
         <lastmod>2026-06-13</lastmod>
     </url>
 
@@ -28,25 +28,17 @@
         <lastmod>2026-06-13</lastmod>
     </url>
 
+
     <url>
-        <loc>https://ishot-it.com/contact</loc>
+        <loc>https://ishot-it.com/privacy</loc>
         <lastmod>2026-06-13</lastmod>
     </url>
 
     <url>
-        <loc>https://ishot-it.com/privacy-policy</loc>
+        <loc>https://ishot-it.com/csae</loc>
         <lastmod>2026-06-13</lastmod>
     </url>
 
-    <url>
-        <loc>https://ishot-it.com/terms-of-service</loc>
-        <lastmod>2026-06-13</lastmod>
-    </url>
-
-    <!-- Blog -->
-    <url>
-        <loc>https://ishot-it.com/blog</loc>
-        <lastmod>2026-06-13</lastmod>
-    </url>
+    
 
 </urlset>

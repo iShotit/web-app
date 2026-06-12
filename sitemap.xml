@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <!-- Homepage -->
+    <url>
+        <loc>https://ishot-it.com/</loc>
+        <lastmod>2026-06-13</lastmod>
+    </url>
+
+    <!-- Public Pages -->
+    <url>
+        <loc>https://ishot-it.com/about</loc>
+        <lastmod>2026-06-13</lastmod>
+    </url>
+
+    <url>
+        <loc>https://ishot-it.com/features</loc>
+        <lastmod>2026-06-13</lastmod>
+    </url>
+
+    <url>
+        <loc>https://ishot-it.com/premium</loc>
+        <lastmod>2026-06-13</lastmod>
+    </url>
+
+    <url>
+        <loc>https://ishot-it.com/pricing</loc>
+        <lastmod>2026-06-13</lastmod>
+    </url>
+
+    <url>
+        <loc>https://ishot-it.com/contact</loc>
+        <lastmod>2026-06-13</lastmod>
+    </url>
+
+    <url>
+        <loc>https://ishot-it.com/privacy-policy</loc>
+        <lastmod>2026-06-13</lastmod>
+    </url>
+
+    <url>
+        <loc>https://ishot-it.com/terms-of-service</loc>
+        <lastmod>2026-06-13</lastmod>
+    </url>
+
+    <!-- Blog -->
+    <url>
+        <loc>https://ishot-it.com/blog</loc>
+        <lastmod>2026-06-13</lastmod>
+    </url>
+
+</urlset>
